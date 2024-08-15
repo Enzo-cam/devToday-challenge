@@ -7,6 +7,7 @@ type Vehicle = {
 }
 
 const VehicleList = ({vehicles} : {vehicles: Vehicle[]}) => {
+    console.log(vehicles)
   return (
     
     <ul className="space-y-2">

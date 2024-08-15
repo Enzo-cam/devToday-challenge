@@ -3,7 +3,7 @@ import VehicleList from "@/Components/VehicleList";
 
 async function fetchVehicles(makeId: string, year: string) {
   const res = await fetch(
-    `https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/${makeId}/modelyear/${year}?format=json`
+    `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/{makeId}/modelyear/{year}?format=json`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch vehicles");
@@ -13,7 +13,7 @@ async function fetchVehicles(makeId: string, year: string) {
 }
 
 async function getAllVehicleTypes(){
-    const res = await fetch('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json')
+    const res = await fetch('https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json');
     if (!res.ok) {
         throw new Error("Failed to fetch vehicles");
     }
@@ -38,7 +38,7 @@ export async function generateStaticParams(){
         }
     }
 
-    const maxPages = 20;
+    const maxPages =100;
     params = params.slice(0, maxPages);
     return params;
 }
