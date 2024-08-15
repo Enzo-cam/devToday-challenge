@@ -1,9 +1,9 @@
 'use client'
 
 type Vehicle = {
-    model_id: string;
-    make_name: string;
-    model_name: string;
+    Model_ID: string;
+    Make_Name: string;
+    Model_Name: string;
 }
 
 const VehicleList = ({vehicles} : {vehicles: Vehicle[]}) => {
@@ -11,11 +11,11 @@ const VehicleList = ({vehicles} : {vehicles: Vehicle[]}) => {
     
     <ul className="space-y-2">
         { vehicles.map((vehicle) => (
-            <li key={vehicle.model_id} className="bg-white p-4 rounded shadow">
+            <li key={vehicle.Model_ID} className="bg-white p-4 rounded shadow">
                 <div className="flex justify-between">
                     <div>
-                        <h2 className="text-xl font-bold">{vehicle.make_name}</h2>
-                        <p className="text-lg">{vehicle.model_name}</p>
+                        <h2 className="text-xl font-bold">{vehicle.Make_Name}</h2>
+                        <p className="text-lg">{vehicle.Model_Name}</p>
                     </div>
                 </div>
             </ li>

@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type VehicleType = {
-  makeId: string;
-  makeName: string;
+  MakeId: string;
+  MakeName: string;
 };
 
 const FilterForm = ({ vehicleTypes }: { vehicleTypes: VehicleType[] }) => {
@@ -33,9 +33,9 @@ const FilterForm = ({ vehicleTypes }: { vehicleTypes: VehicleType[] }) => {
           onChange={(e) => setSelectedType(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded"
         >
-            <option value="">Select Vehicle Type</option>
+            <option value="">Select a Vehicle Type</option>
             {vehicleTypes.map((type) => (
-                <option key={type.makeId} value={type.makeId}>{type.makeName}</option>
+                <option className="text-black" key={type.MakeId} value={type.MakeId}>{type.MakeName}</option>
             ))}
 
         </select>
