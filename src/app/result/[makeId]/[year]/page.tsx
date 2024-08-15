@@ -1,9 +1,11 @@
 import { Suspense } from "react";
 import VehicleList from "@/Components/VehicleList";
 import ButtonBack from "@/Components/ButtonBack";
+
 async function fetchVehicles(makeId: string, year: string) {
+  console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}${process.env.NEXT_PUBLIC_VEHICLE_MODELS_ENDPOINT}/${makeId}/modelyear/${year}?format=json`)
   const res = await fetch(
-    `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}${process.env.NEXT_PUBLIC_VEHICLE_MODELS_ENDPOINT}/${makeId}/modelyear/${year}?format=json`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch vehicles");
@@ -14,7 +16,7 @@ async function fetchVehicles(makeId: string, year: string) {
 
 async function getAllVehicleTypes() {
   const res = await fetch(
-    "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json"
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}${process.env.NEXT_PUBLIC_VEHICLE_TYPES_ENDPOINT}?format=json`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch vehicles");
@@ -33,8 +35,8 @@ export async function generateStaticParams() {
 
   // Limit the number of pages to 20
   let params = [];
-  for (let vehicleType of vehicleTypes) {
-    for (let year of years) {
+  for (const vehicleType of vehicleTypes) {
+    for (const year of years) {
       params.push({
         makeId: vehicleType.MakeId.toString(),
         year,
